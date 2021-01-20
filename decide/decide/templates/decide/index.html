@@ -1,0 +1,65 @@
+{% extends "decide/base.html" %}
+{% load i18n static %}
+
+
+
+
+{% block content %}
+
+<b-row>
+  <b-col class="lang" id="welcome">Welcome to Decide, an online voting platform. This is the main page. Here, you can login to your account
+    and press booth to vote or press visualizer to see the results.</b-col>
+</b-row>
+<!-- Mini dashboard -->
+<b-row v-if="user != null">
+  <b-col sm="12" md="6">
+    <h1 class="lang" id="pendingId">{% trans "My pending votings" %}</h1>
+    <b-list-group>
+      <b-list-group-item variant="secondary" v-if="pending_votings.length <= 0">
+        {% trans "No pending votings" %}
+      </b-list-group-item>
+      <b-list-group-item v-for="voting in pending_votings" :href="'/booth/' + voting.id + '/' + voting.question[0].id + '/'">[[ voting.name ]]
+      </b-list-group-item>
+    </b-list-group>
+  </b-col>
+  <b-col sm="12" md="6">
+    <h1 class="lang" id="resultsId">{% trans "Past votings results" %}</h1>
+    <b-list-group>
+      <b-list-group-item variant="secondary" v-if="past_votings.length <= 0">
+        {% trans "No results" %}
+      </b-list-group-item>
+      <b-list-group-item v-for="voting in past_votings" :href="'/visualizer/' + voting.id">[[ voting.name ]]
+      </b-list-group-item>
+    </b-list-group>
+  </b-col>
+</b-row>
+<b-row class="pt-5">
+  <b-col>
+    <b class="lang" id="questionHelp">You need some help on accesibility?</b></strong></br>
+    <b-button pill onclick="location.href='helpvoiceassistant'" class="mt-2" size="lg">Voice assistant</b-button>
+  </b-col>
+</b-row>
+{% endblock %}
+
+
+
+{% block vue_data %}
+pending_votings: {},
+past_votings: {}
+{% endblock %}
+
+{% block vue_methods %}
+getVotings(evt) {
+  var data = { token: this.token };
+  this.postData("/gateway/voting/getuser/", data)
+      .then(data => {
+          this.pending_votings = data['pending_votings'];
+          this.past_votings = data['past_votings'];
+      })
+}
+{% endblock %}
+
+
+{% block vue_after_getuser %}
+this.getVotings();
+{% endblock %}

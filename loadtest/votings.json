@@ -1,0 +1,95 @@
+{
+  "voting1": [
+    {
+      "type": "BORDA",
+      "options": [
+        {"option": "Option 1", "number": 1, "votes_masc": 0, "votes_fem": 0, "points": 0, "votes": [7, 2, 4, 2]},
+        {"option": "Option 2", "number": 2, "votes_masc": 0, "votes_fem": 0, "points": 0, "votes": [2, 8, 2, 3]},
+        {"option": "Option 3", "number": 3, "votes_masc": 0, "votes_fem": 0, "points": 0, "votes": [4, 4, 4, 3]},
+        {"option": "Option 4", "number": 4, "votes_masc": 0, "votes_fem": 0, "points": 0, "votes": [2, 1, 5, 7]}
+      ]
+    }
+  ],
+  "voting2": [
+    {
+      "type": "EQUALITY",
+      "options": [
+        {"option": "Option 1", "number": 1, "votes_masc": 2, "votes_fem": 3, "points": 0, "votes": 0},
+        {"option": "Option 2", "number": 2, "votes_masc": 0, "votes_fem": 4, "points": 0, "votes": 0},
+        {"option": "Option 3", "number": 3, "votes_masc": 3, "votes_fem": 1, "points": 0, "votes": 0},
+        {"option": "Option 4", "number": 4, "votes_masc": 1, "votes_fem": 0, "points": 0, "votes": 0},
+        {"option": "Option 5", "number": 5, "votes_masc": 1, "votes_fem": 3, "points": 0, "votes": 0},
+        {"option": "Option 6", "number": 6, "votes_masc": 1, "votes_fem": 1, "points": 0, "votes": 0}
+      ]
+    }, {
+      "type": "SAINTE_LAGUE",
+      "options": [
+        {"option": "Option 1", "number": 1, "points": 7, "votes_masc": 0, "votes_fem": 0, "votes": 340000},
+        {"option": "Option 2", "number": 2, "points": 7, "votes_masc": 0, "votes_fem": 0, "votes": 280000},
+        {"option": "Option 3", "number": 3, "points": 7, "votes_masc": 0, "votes_fem": 0, "votes": 160000},
+        {"option": "Option 4", "number": 4, "points": 7, "votes_masc": 0, "votes_fem": 0, "votes": 60000},
+        {"option": "Option 5", "number": 5, "points": 7, "votes_masc": 0, "votes_fem": 0, "votes": 40000},
+        {"option": "Option 6", "number": 6, "points": 7, "votes_masc": 0, "votes_fem": 0, "votes": 20000},
+        {"option": "Option 7", "number": 7, "points": 7, "votes_masc": 0, "votes_fem": 0, "votes": 10000}
+      ]
+    }
+  ],
+  "voting3": [
+    {
+      "type": "HONDT",
+      "options": [
+        {"option": "Option 1", "number": 1, "points": 7, "votes_masc": 0, "votes_fem": 0, "votes": 340000},
+        {"option": "Option 2", "number": 2, "points": 7, "votes_masc": 0, "votes_fem": 0, "votes": 280000},
+        {"option": "Option 3", "number": 3, "points": 7, "votes_masc": 0, "votes_fem": 0, "votes": 160000},
+        {"option": "Option 4", "number": 4, "points": 7, "votes_masc": 0, "votes_fem": 0, "votes": 60000},
+        {"option": "Option 5", "number": 5, "points": 7, "votes_masc": 0, "votes_fem": 0, "votes": 15000}
+      ]
+    }, {
+      "type": "DROOP",
+      "options": [
+        {"option": "Option A", "number": 1, "points": 21, "votes_masc": 0, "votes_fem": 0, "votes": 12000},
+        {"option": "Option B", "number": 2, "points": 21, "votes_masc": 0, "votes_fem": 0, "votes": 184000},
+        {"option": "Option C", "number": 3, "points": 21, "votes_masc": 0, "votes_fem": 0, "votes": 73000},
+        {"option": "Option D", "number": 4, "points": 21, "votes_masc": 0, "votes_fem": 0, "votes": 2000},
+        {"option": "Option E", "number": 5, "points": 21, "votes_masc": 0, "votes_fem": 0, "votes": 391000},
+        {"option": "Option F", "number": 6, "points": 21, "votes_masc": 0, "votes_fem": 0, "votes": 311000},
+        {"option": "Option G", "number": 7, "points": 21, "votes_masc": 0, "votes_fem": 0, "votes": 27000}
+      ]
+    }, {
+      "type": "IMPERIALI",
+      "options": [
+        {"option": "Option A", "number": 1, "points": 21, "votes_masc": 0, "votes_fem": 0, "votes": 12000},
+        {"option": "Option B", "number": 2, "points": 21, "votes_masc": 0, "votes_fem": 0, "votes": 184000},
+        {"option": "Option C", "number": 3, "points": 21, "votes_masc": 0, "votes_fem": 0, "votes": 73000},
+        {"option": "Option D", "number": 4, "points": 21, "votes_masc": 0, "votes_fem": 0, "votes": 2000},
+        {"option": "Option E", "number": 5, "points": 21, "votes_masc": 0, "votes_fem": 0, "votes": 391000},
+        {"option": "Option F", "number": 6, "points": 21, "votes_masc": 0, "votes_fem": 0, "votes": 311000},
+        {"option": "Option G", "number": 7, "points": 21, "votes_masc": 0, "votes_fem": 0, "votes": 27000}
+      ]
+    }
+  ],
+  "voting4": [
+    {
+      "type": "IDENTITY",
+      "options": [
+        {"option": "Option 1", "number": 1, "points": 0, "votes_masc": 0, "votes_fem": 0, "votes": 5},
+        {"option": "Option 2", "number": 2, "points": 0, "votes_masc": 0, "votes_fem": 0, "votes": 0},
+        {"option": "Option 3", "number": 3, "points": 0, "votes_masc": 0, "votes_fem": 0, "votes": 3},
+        {"option": "Option 4", "number": 4, "points": 0, "votes_masc": 0, "votes_fem": 0, "votes": 2},
+        {"option": "Option 5", "number": 5, "points": 0, "votes_masc": 0, "votes_fem": 0, "votes": 5},
+        {"option": "Option 6", "number": 6, "points": 0, "votes_masc": 0, "votes_fem": 0, "votes": 1}
+      ]
+    }, {
+      "type": "HARE",
+      "options": [
+        {"option": "Option A", "number": 1, "points": 21, "votes_masc": 0, "votes_fem": 0, "votes": 391000},
+        {"option": "Option B", "number": 2, "points": 21, "votes_masc": 0, "votes_fem": 0, "votes": 311000},
+        {"option": "Option C", "number": 3, "points": 21, "votes_masc": 0, "votes_fem": 0, "votes": 184000},
+        {"option": "Option D", "number": 4, "points": 21, "votes_masc": 0, "votes_fem": 0, "votes": 73000},
+        {"option": "Option E", "number": 5, "points": 21, "votes_masc": 0, "votes_fem": 0, "votes": 27000},
+        {"option": "Option F", "number": 6, "points": 21, "votes_masc": 0, "votes_fem": 0, "votes": 12000},
+        {"option": "Option G", "number": 7, "points": 21, "votes_masc": 0, "votes_fem": 0, "votes": 2000}
+      ]
+    }
+  ]
+}

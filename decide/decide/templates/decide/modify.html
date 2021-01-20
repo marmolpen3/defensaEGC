@@ -1,0 +1,114 @@
+{% extends "decide/base.html" %}
+{% load i18n static %}
+
+{% block content %}
+<b-row v-if="user != null">
+    <div class="formModifyDiv" id="formModifyDiv">
+        <div id="textOnlyForVoiceAssistant">
+            Information about the style.
+            Normal style and night: For people without any vision problem.
+            Tritanopia style: For people with a lack of sensitivity to blue.
+            Color blind: For people with a slight degree of difficulty discriminating shades of red and green.
+        </div>
+        <b-form @submit="onSubmitModify">
+
+            <b-form-group class="text-justify" label="Username" label-for="input-1">
+                <b-form-input id="input-1" v-model="formModify.username" required style="width: 350px">
+                </b-form-input>
+            </b-form-group>
+
+            <b-form-group class="text-justify" label="Email" label-for="input-2">
+                <b-form-input id="input-2" v-model="formModify.email" type="email" placeholder="example@email.com"
+                    style="width: 350px">
+                </b-form-input>
+            </b-form-group>
+
+            <b-form-group class="text-justify" label="Style" v-slot="{ ariaDescribedby }">
+                {% for style in user_styles %}
+                <b-form-radio v-model="formModify.style" :aria-describedby="ariaDescribedby" name="style"
+                    value="{% trans style.0 %}">{% trans style.1 %}</b-form-radio>
+                {% endfor %}
+            </b-form-group>
+
+            <b-form-group class="text-justify" label="Sex" v-slot="{ ariaDescribedby }">
+                {% for sex in user_sex %}
+                <b-form-radio v-model="formModify.sex" :aria-describedby="ariaDescribedby" name="sex"
+                    value="{% trans sex.0 %}" required>{% trans sex.1 %}</b-form-radio>
+                {% endfor %}
+            </b-form-group>
+
+
+            <b-button class="mt-3" type="submit" variant="primary">Submit</b-button>
+        </b-form>
+    </div>
+</b-row>
+{% endblock %}
+
+{% block vue_data %}
+formModify: {
+username:'',
+sex: '',
+style: '',
+email:''
+}
+
+
+{% endblock %}
+
+
+<script>
+
+    {% block vue_methods %}
+    onSubmitModify(evt){
+        if (this.formModify.email == "") {
+            evt.preventDefault()
+
+            var data = {
+                token: this.token, username: this.formModify.username
+            };
+            var data_style = { token: this.token, style: this.formModify.style };
+            var data_sex = { token: this.token, sex: this.formModify.sex };
+            this.postData("/gateway/authentication/changestyle/", data_style);
+            this.postData("/gateway/authentication/changesex/", data_sex);
+            this.postData("/gateway/authentication/modify/", data)
+                .then(data => {
+                    this.getUser();
+                    alert("Profile data updated successfully.")
+                })
+                .catch(error => {
+                    this.showAlert("danger", 'Error: ' + error);
+                });
+        } else {
+            evt.preventDefault()
+
+            var data = {
+                token: this.token, username: this.formModify.username
+            };
+            var data_email = { token: this.token, email: this.formModify.email };
+            var data_style = { token: this.token, style: this.formModify.style };
+            var data_sex = { token: this.token, sex: this.formModify.sex };
+            this.postData("/gateway/authentication/changeemail/", data_email);
+            this.postData("/gateway/authentication/changestyle/", data_style);
+            this.postData("/gateway/authentication/changesex/", data_sex);
+            this.postData("/gateway/authentication/modify/", data)
+                .then(data => {
+                    this.getUser();
+                    alert("Profile data updated successfully.")
+                })
+                .catch(error => {
+                    this.showAlert("danger", 'Error: ' + error);
+                });
+
+        }
+
+
+    },
+
+    {% endblock %}
+</script>
+{% block vue_after_getuser %}
+this.formModify.username = this.user.username
+this.formModify.sex = this.user.sex
+this.formModify.email = this.user.email
+this.formModify.style = this.user.style
+{% endblock %}

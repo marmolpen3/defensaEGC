@@ -1,0 +1,5 @@
+{
+    "styles": ["N", "O", "C", "T"],
+    "sex_types": ["M", "F"],
+    "emails": ["prueba@hotmail.com", "prueba@gmail.com", "ultimocorreo@yahoo.com"]
+}

@@ -1,0 +1,390 @@
+
+body,h3,a{
+    font-size:1em;
+    color:white;
+}
+
+body {
+    background-color:#5D6D7E;
+}
+
+#app-decide {
+    background-color:#5D6D7E;
+}
+
+.bg-primary {
+    background-color: #17202A !important;
+}
+
+
+
+h1{
+    font-size:1.4285em;
+}
+
+h2{
+font-size:1.1428em;
+}
+ p,td,span{
+     font-size:0.9285em;
+ }
+
+#zoomIn,#zoomOut{
+    border-radius: .3rem;
+    background-color:#0E2742;
+    border-color: #90A7C0;
+    color:white;
+
+}
+
+.translate{
+    margin:auto;
+    border-radius: .3rem;
+    background-color:#0E2742;
+    border-color: #90A7C0;
+    color:white;
+}
+
+.colMS {
+    background-color:#5D6D7E !important;
+}
+
+h1{
+    color: white !important;
+    font-family: serif !important;
+}
+#header{ 
+    background-color: #17202A !important;
+    color: white !important;
+}
+
+.module caption{
+    background: #17202A !important;
+    color: white !important;
+}
+
+.module table th {
+    width: 100%;
+    background: #34495E !important;
+    color: white !important;
+}
+
+.module table td {
+    white-space: nowrap;
+    background: #90A7C0 !important;
+    color: white !important;
+}
+
+#content{
+    color: #90A7C0 !important;
+}
+
+
+
+#container{
+    background-color: #5D6D7E !important ;
+}
+
+
+#footer{
+    background-color: #5D6D7E !important ;
+    margin:0% ;
+}
+
+.object-tools .addlink{
+    background-color: #17202A !important;
+    color: white !important;
+}
+
+#content-main a{
+    color: white !important;
+}
+.breadcrumbs{
+    background-color: #5D6D7E !important;
+
+}
+
+#branding{
+    display:inline-flex;
+}
+.required{
+    font-size: 0.875em;
+}
+#id_username,#id_password{
+    font-size: 1em;
+}
+#buttons_zoom{
+    margin:auto;
+}
+.d-block{
+    font-size: 1.36em;
+}
+#username,#password{
+    font-size:1em;
+}
+
+#asistente_instalacion,#asistente_uso2 {
+    width: 1000px;
+}
+
+#asistente_movil {
+    width: 400px;
+}
+
+#content-related .module h2 {
+    padding: 0px 0px;
+    font-size: 16px;
+    background-color: #D5D8DC !important;
+}
+
+#changelist {
+    background: #5D6D7E;
+    padding: 0px 0px;
+}
+
+#changelist .actions {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0px 0px;
+    background: #5D6D7E;
+}
+
+#changelist .actions .button {
+    min-width: 48px;
+    margin: 0px 0px;
+}
+
+#changelist .results + .paginator{
+    border-top: none;
+    padding: 0px 0px;
+    background: #5D6D7E;
+    color: white;
+}
+
+#changelist .actions label {
+    display: flex;
+    padding: 0px 0px;
+    background: #5D6D7E;
+    color: white;
+}
+
+.actions span.action-counter {
+    font-size: 11px;
+    margin: 0 0px 0 0;
+    background: #5D6D7E;
+    color: white;
+}
+
+#changelist .actions select {
+    background: #D5D8DC;
+}
+
+#changelist #toolbar {
+    order: 1;
+    padding: 10px;
+    background: #D5D8DC;
+}
+
+#changelist .paginator {
+    background: #5D6D7E;
+    color: white;
+}
+
+#changelist-search .quiet {
+    width: 100%;
+    margin: 5px 0 0 25px;
+    color: #17202A;
+    
+}
+
+#changelist-filter {
+    font-weight: 400;
+    font-size: 14px;
+    padding: 0 0px;
+    margin-bottom: 10px;
+    background: #5D6D7E;
+    color: #17202A;
+}
+
+#changelist-filter h2 {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 5px 15px;
+    margin-bottom: 12px;
+    border-bottom: none;
+    background: #34495E;
+    color: white;
+}
+
+#changelist-filter h3 {
+    font-weight: 400;
+    font-size: 14px;
+    padding: 0 15px;
+    margin-bottom: 10px;
+    background: #34495E;
+    color: white;
+}
+
+.submit-row {
+    padding: 10px 10px 0;
+    margin: 0 0 15px;
+    display: flex;
+    flex-direction: column;
+    background: #34495E;
+}
+
+
+.aligned .form-row, .aligned .form-row > div {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 100vw;
+    background: #5D6D7E;
+    color: white;
+}
+.aligned label {
+    width: 100%;
+    padding: 0 0 10px;
+    color: white;
+}
+
+.help, p.help, form p.help, div.help, form div.help, div.help li {
+    font-size: 11px;
+    color: white;
+}
+
+
+.admindatefilter .button, .admindatefilter input[type="reset"] {
+    background: #17202A;
+    padding: 4px 5px;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.calendar td a{
+    display: block;
+    font-weight: 400;
+    padding: 6px;
+    text-decoration: none;
+    color:#fff;
+}
+
+.calendar td a, .timelist a {
+    display: block;
+    font-weight: 400;
+    padding: 6px;
+    color: #fff;
+}
+
+
+.calendar th a, .timelist a {
+    display: block;
+    font-weight: 400;
+    padding: 6px;
+    color: #fff;
+}
+
+.calendar th a{
+    display: block;
+    font-weight: 400;
+    padding: 6px;
+    text-decoration: none;
+    color: #fff;
+}
+
+
+
+.btn-abrir-popup{
+    padding: 0 20px;
+	margin-bottom: 20px;
+	height: 40px;
+	line-height: 40px;
+	border: none;
+	color: white;
+	background: #17202A;
+	border-radius: 3px;
+	font-size: 16px;
+	cursor: pointer;
+	transition: .3s ease all;
+    cursor: pointer;
+    margin-left: 100 px;
+}
+
+/* POPUP */
+.overlay {
+	background: rgba(0,0,0,.3);
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+    right: 0;
+    align-items: center;
+	justify-content: center;
+    display: flex;
+    visibility: hidden;
+    z-index: 2;
+    
+}
+.overlay.active{
+    visibility: visible;
+}
+
+.popupadmin {
+	background: #90A7C0;
+	box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.3);
+	border-radius: 3px;
+	padding: 20px;
+	text-align: center;
+    width: 600px;
+    color: #17202A;
+}
+
+.popupadmin .btn-cerrar-popup{
+    font-size: 16px;
+	line-height: 16px;
+	display: block;
+	text-align: right;
+	transition: .3s ease all;
+	color: #17202A;
+}
+
+.popupadmin .btn-cerrar-popup:hover {
+	color: #000;
+}
+
+.closePopUp {
+    float: right;
+}
+.popupadmin h4 {
+    color: #17202A !important;
+    font-family: serif !important;
+    font-size: 36px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+#footer {
+    display: block;
+    margin: auto;
+}
+
+#text-voice-assistants {
+    margin: 40px;
+}
+
+#signInDiv {
+    float:right;
+}
+
+#formSignUpDiv, #formModifyDiv {
+    align-content: center;
+    border-radius: 10px;
+    margin: 0 auto;
+}
+
+#textOnlyForVoiceAssistant {
+    position: absolute;
+    font-size: 0;
+}

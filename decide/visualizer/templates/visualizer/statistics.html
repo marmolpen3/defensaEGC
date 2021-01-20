@@ -1,0 +1,107 @@
+{% extends "visualizer/visualizerBase.html" %}
+{% load i18n static %}
+
+{% block content %}
+    <div id="app-visualizer">
+        <div class="statistics container">
+            <h1>[[ voting.id ]] - [[ voting.name ]]</h1>
+            <h2 class="heading">Statistics:</h2>
+
+
+            <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Voting Census</th>
+                            <th>Total Votes</th>
+                            <th>Votes percentage</th>
+                            <th v-if="!voting.start_date">Status</th>
+                            <th v-else-if="!voting.end_date">Remaining votes</th>
+                            <th v-else>Absenteeism</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>[[stats.census]]</td>
+                            <td>[[stats.votes]]</td>
+                            <td>[[stats.percentage]]%</td>
+                            <td v-if="!voting.start_date">Not started</td>
+                            <td v-else-if="!voting.end_date">[[stats.census-stats.votes]]</td>
+                            <td v-else>[[100-stats.percentage]]%</td>
+                        </tr>
+                    </tbody>
+                            </table>
+                        <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Male census percentage</th>
+                            <th>Female census percentage</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>[[stats.males_c]]%</td>
+                            <td>[[stats.females_c]]%</td>
+                        </tr>
+                    </tbody>
+                </table>
+                           </table>
+                        <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Male voting percentage</th>
+                            <th>Female voting percentage</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>[[stats.males_v_percentage]]%</td>
+                            <td>[[stats.females_v_percentage]]%</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p v-if="!voting.start_date">* Voting not started yet. Census is still open and might change *</p>
+            <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Counting type</th>
+                            <th>Counting Status</th>
+                            <th>Start date</th>
+                            <th>End date</th>
+                            <th v-if="voting.end_date">Time elapsed</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>[[stats.type]]</td>
+                            <td>[[stats.tally]]</td>
+                            <td>[[stats.start]]</td>
+                            <td>[[stats.end]]</td>
+                            <td v-if="voting.end_date">[[stats.time]]</td>
+                        </tr>
+                    </tbody>
+                </table>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extrabody %}
+    <!-- Vuejs -->
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://unpkg.com/babel-polyfill@latest/dist/polyfill.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.js"></script>
+
+    <script>
+        var voting = {{voting|safe}};
+        var stats = {{stats|safe}};
+        var app = new Vue({
+            delimiters: ['[[', ']]'],
+            el: '#app-visualizer',
+            data: {
+                voting: voting,
+                stats: stats
+            }
+        })
+
+    </script>
+</body>
+{% endblock %}

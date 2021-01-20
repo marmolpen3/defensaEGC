@@ -1,0 +1,104 @@
+{% extends "visualizer/visualizerBase.html" %}
+{% load i18n static %}
+
+{% block extrahead %}
+    <link type="text/css" rel="stylesheet"
+         href="https://unpkg.com/bootstrap/dist/css/bootstrap.min.css" />
+    <link type="text/css" rel="stylesheet"
+         href="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.css" />
+    <link type="text/css" rel="stylesheet" href="{% static "booth/style.css" %}" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+<header>
+     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <div class="container-fluid"> 
+        <a class="navbar-brand" href="/"><img src="{% static 'img/LOGODecide.png' %}" /> Decide </a> 
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+        </div>
+      </div>
+    </nav>
+</header>
+    <script src="{% static 'js/zoom.js' %}"></script>
+{% endblock %}
+
+
+{% block content %}
+
+    <br id="app-visualizer">
+    
+        <h1>Voting list</h1>
+        <b>Search by name:
+            <form action="" method="get">
+            <input type="text" id="nombre" name="nombre">
+            <input type="submit" value="Buscar"></form></b>
+        <b>Filter by: <a href="/visualizer">All votings</a> / <a href="?filter=A">Started</a> / <a href="?filter=S">Without starting</a> / <a href="?filter=F">Finished, with tally</a> / <a href="?filter=Fn">Finished, no tally</a></b>
+        <div class="voting container">
+            <table class="table table-striped" style="width:100%">
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Status</th>
+                        <th>Statistics</th>
+                    </tr>
+            {% for voting in votings %}
+                    <tr>
+                        <td>{{ voting.id }}</td>
+                        <td>{{ voting.name }}</td>
+                        <td>
+                        {% for question in questions %}
+                            {% for q in question %}
+                                {% if forloop.parentloop.counter0 == forloop.parentloop.parentloop.counter0 %}
+                                    {{ q }}
+                                {% endif %}
+                            {% endfor %}
+                        {% endfor %}
+                        </td>
+                        {% if voting.start_date == None %}
+                            <td>Voting not started</td>
+                            <td><a href="{{ voting.id }}/statistics"> View statistics</a> </td>
+                        {% elif voting.end_date == None %}
+                            <td>Voting in progress</td>
+                            <td><a href="{{ voting.id }}/statistics"> View statistics</a> </td>
+                        {% elif voting.postproc == None %}
+                            <td>Voting finished, no tally</td>
+                            <td><a href="{{ voting.id }}/statistics"> View statistics</a> </td>
+                        {% else %}
+                            <td>Voting finished, with tally</td>
+                            <td><a href="{{ voting.id }}">View graphics </a><a> / </a><a href="{{ voting.id }}/statistics"> View statistics</a> </td>
+                        {% endif %}
+                    </tr>
+            {% endfor %}
+            </table>
+        </div>
+        {% if user == True %}
+            </br></br><b>As you are superuser you can see all the votes</b>
+        {% else %}
+            </br></br><b>As you are not a superuser, you can only see the votes in which you are in the census</b>
+        {% endif %}
+        </div>
+        </br></br><h5><a href="/visualizer/global">View global statistics</a></h5>
+{% endblock %}
+
+{% block extrabody %}
+    <!-- Vuejs -->
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://unpkg.com/babel-polyfill@latest/dist/polyfill.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.js"></script>
+
+    <script>
+        var voting = {{voting|safe}};
+        var app = new Vue({
+            delimiters: ['[[', ']]'],
+            el: '#app-visualizer',
+            data: {
+                voting: voting
+            }
+        })
+    </script>
+</body>
+{% endblock %}

@@ -1,0 +1,251 @@
+{% load i18n static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>{% block title %}Decide!{% endblock %}</title>
+    <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap/dist/css/bootstrap.min.css" />
+    <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.css" />
+    <!-- Selección de estilo -->
+    <link id="user_style" type="text/css" rel="stylesheet" href="{% static 'styles/N.css' %}" />
+    <script>
+        function setUserStyle(sheet) {
+            document.getElementById("user_style").setAttribute("href", sheet);
+        }
+    </script>
+    <!-- Zoom -->
+    <script src="{% static 'js/zoom.js' %}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    
+    <!-- Translation -->
+    <!-- Popups -->
+    <script>
+        function openPopUp() {
+            overlay = document.getElementById('overlay');
+            popupadmin = document.getElementById('popupadmin');
+            overlay.classList.add('active');
+            popupadmin.classList.add('active');
+
+            document.getElementById('username').value = "";
+            document.getElementById('password').value = "";
+        }
+        function closePopUp() {
+            overlay.classList.remove('active');
+            popupadmin.classList.remove('active');
+        }
+    </script>
+    <!-- Vue -->
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://unpkg.com/babel-polyfill@latest/dist/polyfill.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.js"></script>
+    {% block extrahead %}{% endblock %}
+</head>
+
+<body>
+    <div id="app-decide">
+        <!-- Navbar -->
+        <b-navbar toggleable="lg" type="dark" variant="primary">
+            <b-navbar-brand href="{% url 'index' %}">
+                <img src="{% static 'img/LOGODecide.png' %}" />
+                Decide
+            </b-navbar-brand>
+
+            <!-- Responsive navbar button -->
+            <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+
+            <div class="navbar-collapse collapse show">
+                <b-navbar-nav>
+                    <b-nav-item href="{% url 'dashboard' %}" v-if="user != null">Booth</b-nav-item>
+                    <b-nav-item href="{% url 'admin:index' %}" v-if="user != null && user.is_staff">Admin</b-nav-item>
+                    <b-nav-item href="/admin/voting/voting" v-if="user != null && user.is_staff">Votings</b-nav-item>
+                </b-navbar-nav>
+            </div>
+
+            <b-collapse id="nav-collapse" is-nav>
+                <b-navbar-nav>
+                    <div id="buttons_zoom">
+                        <button id="zoomIn" onclick="zoomIn()">Zoom<br>In</button>
+                        <button id="zoomOut" disabled="disabled" onclick="zoomOut()">Zoom<br>Out</button>
+                    </div>
+                    
+
+                    <div id="translate"> 
+                        <button class="translate" id="es">Español</button>
+                        <button class="translate" id="en">English</button>
+                        
+                    </div>
+                   
+                </b-navbar-nav>
+
+                <!-- Right aligned nav items -->
+                <!-- Authenticated user -->
+                <b-navbar-nav class="ml-auto" v-if="user != null">
+
+                    <b-navbar-brand>
+                        <strong class="lang" id="welcomeID">
+                            {% trans "Welcome" %}
+                        </strong>
+                        <strong >
+                             [[this.user.username]]!
+                        </strong>
+                    </b-navbar-brand>
+                    <b-nav-item-dropdown text="{% trans " Change style" %}" right>
+                        {% for style in user_styles %}
+                        <b-dropdown-item v-on:click="onChangeStyle('{% trans style.0 %}')"
+                            :active="user.style == '{% trans style.0 %}'">{% trans style.1 %}</b-dropdown-item>
+                        {% endfor %}
+                    </b-nav-item-dropdown>
+                    <b-button href="{% url 'modifyProfileData' %}" v-if="user != null && !user.is_staff">Modify</b-button>
+                    <b-button variant="danger" href="{% url 'indexlogout' %}">
+                        {% trans "Logout" %}
+                    </b-button>
+                </b-navbar-nav>
+
+                <!-- Non authenticated user -->
+                <b-navbar-nav class="ml-auto" v-if="user == null">
+                    <b-button onclick="openPopUp();" variant="light" id="btn-abrir-popup">{% trans "Login" %}</b-button>
+                    <b-button variant="secondary" onclick="location.href='{% url 'signIn' %}'" id="signIn" class="signIn">Sign up</b-button>
+                </b-navbar-nav>
+            </b-collapse>
+        </b-navbar>
+
+        <!-- Alerts -->
+        <b-alert :variant="alertLvl" dismissible v-model="alertShow">
+            [[ alertMsg ]]
+        </b-alert>
+
+        <!-- Login -->
+        <div class="overlay" id="overlay">
+            <div class="popupadmin" id="popupadmin">
+                <b-button variant="danger" onclick="closePopUp();" id="closePopUp" class="closePopUp">X</b-button>
+                <h4>Login</h4>
+                <b-row v-if="user == null" align-h="center">
+                    <b-col cols="4" class="text-center">
+                        <b-form action="{% url 'indexlogin' %}" method="post">
+                            {% csrf_token %}
+                            <b-form-group class="text-justify" label-for="username">
+                                <b class="text-justify lang" id="user">Username</b>
+                                <b-form-input id="username" type="text" v-model="form.username" autocomplete="username" name="username"
+                                    required />
+                            </b-form-group>
+                            <b-form-group class="text-justify" label-for="password">
+                                <b class="text-justify lang" id="pass">Password</b>
+                                <b-form-input id="password" type="password" autocomplete="current-password" name="password"
+                                    v-model="form.password" required />
+                            </b-form-group>
+                            <b-button class="mt-3 " type="submit" variant="primary" size="lg">
+                                {% trans "Login" %}</b-button>
+                        </b-form>
+                    </b-col>
+                </b-row>
+                <div id="signInDiv">
+                    <b-button variant="secondary" onclick="location.href='{% url 'signIn' %}'" id="signIn" class="signIn">Sign up</b-button>
+                </div>
+            </div>
+        </div>
+
+        <b-container class="pt-4">
+            {% block content %}{% endblock %}
+            <!-- Footer -->
+            <b-row class="pt-5">
+                <b-img center fluid src="{% static 'img/footer.png' %}"></b-img>
+                
+            </b-row>
+        </b-container>
+    </div>
+    {% block extrabody %}{% endblock %}
+    <script src="{% static 'js/script.js' %}"></script>
+    <!-- Vue -->
+    <script>
+        var app = new Vue({
+            delimiters: ['[[', ']]'],
+            el: '#app-decide',
+            data: {
+                token: null,
+                user: null,
+                form: {
+                    username: '',
+                    password: ''
+                },
+                alertShow: false,
+                alertMsg: "",
+                alertLvl: "info",
+                {% block vue_data %}{% endblock %}
+            },
+            beforeMount() {
+                this.init()
+            },
+            methods: {
+                init() {
+                    var cookies = document.cookie.split("; ");
+                    cookies.forEach((c) => {
+                        var cs = c.split("=");
+                        if (cs[0] == 'decide' && cs[1]) {
+                            this.token = cs[1];
+                            this.getUser();
+                        }
+                    });
+                    if(window.location.search == '?failedlogin') {
+                        this.showAlert("danger", 'Wrong credentials');
+                    }
+                    {% block vue_after_init %}{% endblock %}
+                },
+                postData(url, data) {
+                    var fdata = {
+                        body: JSON.stringify(data),
+                        headers: {
+                            'content-type': 'application/json',
+                        },
+                        method: 'POST',
+                    };
+
+                    if (this.token) {
+                        fdata.headers['Authorization'] = 'Token ' + this.token;
+                    }
+
+                    return fetch(url, fdata)
+                        .then(response => {
+                            if (response.status === 200) {
+                                return response.json();
+                            } else {
+                                return Promise.reject(response.statusText);
+                            }
+                        });
+                },
+                getUser(evt) {
+                    var data = { token: this.token };
+                    this.postData("{% url 'gateway' 'authentication' '/getuser/' %}", data)
+                        .then(data => {
+                            this.user = data;
+                            setUserStyle("{% static 'styles/' %}"+this.user.style+".css");
+                            {% block vue_after_getuser %}{% endblock %}
+                        })
+                        .catch(error => {
+                            this.showAlert("danger", 'Error: ' + error);
+                        });
+                },
+                onChangeStyle(newstyle) {
+                    var data = { token: this.token, style: newstyle };
+                    this.postData("{% url 'gateway' 'authentication' '/changestyle/' %}", data)
+                        .then(data => {
+                            this.getUser();
+                        })
+                        .catch(error => {
+                            this.showAlert("danger", '{% trans "Error: " %}' + error);
+                        });
+                },
+                showAlert(lvl, msg) {
+                    this.alertLvl = lvl;
+                    this.alertMsg = msg;
+                    this.alertShow = true;
+                },
+                {% block vue_methods %}{% endblock %}
+            },
+        })
+    </script>
+</body>
+</html>

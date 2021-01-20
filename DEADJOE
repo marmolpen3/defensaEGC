@@ -1,0 +1,59 @@
+
+*** These modified files were found in JOE when it aborted on Thu Jan  7 00:32:59 2021
+*** JOE was aborted because the terminal closed
+
+*** File '/home/josele/Escritorio/Repositorio Decide/decide/.git/COMMIT_EDITMSG'
+
+# Por favor ingresa el mensaje del commit para tus cambios. Las
+#  líneas que comiencen con '#' serán ignoradas, y un mensaje
+#  vacío aborta el commit.
+#
+# En la rama visualizacion-jose
+# Tu rama está adelantada a 'origin/visualizacion-jose' por 18 commits.
+#   (usa "git push" para publicar tus commits locales)
+#
+# Cambios a ser confirmados:
+#	nuevo archivo:  decide/authentication/migrations/0001_initial.py
+#	nuevo archivo:  decide/base/migrations/0001_initial.py
+#	nuevo archivo:  decide/census/migrations/0001_initial.py
+#	nuevo archivo:  decide/mixnet/migrations/0001_initial.py
+#	nuevo archivo:  decide/populate.json
+#	nuevo archivo:  decide/store/migrations/0001_initial.py
+#	nuevo archivo:  decide/visualizer/templates/visualizer/functionVisualizer.html
+#	nuevo archivo:  decide/visualizer/templates/visualizer/js/prueba.js
+#	modificado:     decide/visualizer/templates/visualizer/visualizer.html
+#	modificado:     decide/visualizer/urls.py
+#	modificado:     decide/visualizer/views.py
+#	nuevo archivo:  decide/voting/migrations/0001_initial.py
+#
+# Archivos sin seguimiento:
+#	.idea/
+#
+
+*** File '(Unnamed)'
+/home/josele/Escritorio/Repositorio Decide/decide/.git/COMMIT_EDITMSG
+* Build Log *
+* Build Log *
+/home/josele/Escritorio/Repositorio Decide/decide/.git/COMMIT_EDITMSG
+
+*** File '* Startup Log *'
+Processing '/etc/joe/editorrc'...
+Processing '/etc/joe/ftyperc'...
+Finished processing /etc/joe/ftyperc
+Finished processing /etc/joe/editorrc
+
+*** These modified files were found in JOE when it aborted on Thu Jan  7 01:29:46 2021
+*** JOE was aborted because the terminal closed
+
+*** File '(Unnamed)'
+/home/josele/Escritorio/Repositorio Decide/decide/.git/COMMIT_EDITMSG
+* Build Log *
+* Build Log *
+/home/josele/Escritorio/Repositorio Decide/decide/.git/COMMIT_EDITMSG
+/home/josele/Escritorio/Repositorio Decide/decide/.git/COMMIT_EDITMSG
+
+*** File '* Startup Log *'
+Processing '/etc/joe/editorrc'...
+Processing '/etc/joe/ftyperc'...
+Finished processing /etc/joe/ftyperc
+Finished processing /etc/joe/editorrc

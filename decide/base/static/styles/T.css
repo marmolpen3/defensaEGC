@@ -1,0 +1,353 @@
+
+body,h3,a{
+    font-size:1em;
+}
+
+body {
+    background-color:#F8DFE9;
+}
+
+#app-decide {
+    background-color:#F8DFE9;
+}
+
+.bg-primary {
+    background-color: #116D72 !important;
+}
+
+h1{
+    font-size:1.4285em;
+}
+
+h2{
+font-size:1.1428em;
+}
+ p,td,span{
+     font-size:0.9285em;
+ }
+
+#zoomIn,#zoomOut{
+    border-radius: .3rem;
+    background-color:#F8DFE9;
+    border-color: #BB688A;
+    color:black;
+
+}
+
+.translate{
+    margin:auto;
+    border-radius: .3rem;
+    background-color:#F8DFE9;
+    border-color: #BB688A;
+    color:black;
+}
+
+.colMS {
+    background-color:#F8DFE9 !important;
+}
+
+h1{
+    color: #116D72 !important;
+    font-family: serif !important;
+}
+
+#header{ 
+    background-color: #116D72 !important;
+    color: white !important;
+}
+
+.module caption{
+    background: #116D72 !important;
+    color: white !important;
+}
+
+.module table th {
+    width: 100%;
+    background: #CFFBFD  !important;
+    color: black !important;
+}
+
+.module table td {
+    white-space: nowrap;
+    background: #CFFBFD !important;
+    color: black !important;
+}
+
+#content{
+    color: #116D72 !important;
+}
+
+
+
+#container{
+    background-color: #F8DFE9 !important ;
+}
+
+
+#footer{
+    background-color: #F8DFE9 !important ;
+    margin:0% ;
+}
+
+.object-tools .addlink{
+    background-color: #116D72 !important;
+    color: white !important;
+}
+
+
+.breadcrumbs{
+    background-color: #116D72 !important;
+
+}
+
+#branding{
+    display:inline-flex;
+}
+.required{
+    font-size: 0.875em;
+}
+#id_username,#id_password{
+    font-size: 1em;
+}
+#buttons_zoom{
+    margin:auto;
+}
+.d-block{
+    font-size: 1.36em;
+}
+#username,#password{
+    font-size:1em;
+}
+
+#asistente_instalacion,#asistente_uso2 {
+    width: 1000px;
+}
+
+#asistente_movil {
+    width: 400px;
+}
+
+#content-related .module h2 {
+    padding: 0px 0px;
+    font-size: 16px;
+    background-color: #116D72 !important;
+    color: white;
+}
+
+#changelist {
+    background: #F8DFE9;
+    padding: 0px 0px;
+}
+
+#changelist .actions {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0px 0px;
+    background: #F8DFE9;
+}
+
+#changelist .actions .button {
+    min-width: 48px;
+    margin: 0px 0px;
+}
+
+#changelist .results + .paginator{
+    border-top: none;
+    padding: 0px 0px;
+    background: #F8DFE9;
+    color: black;
+}
+
+#changelist .actions label {
+    display: flex;
+    background: #F8DFE9;
+    color: black;
+}
+
+.actions span.action-counter {
+    font-size: 11px;
+    background: #F8DFE9;
+    color: black;
+}
+
+#changelist .actions select {
+    background: #F8DFE9;
+}
+
+#changelist #toolbar {
+    order: 1;
+    padding: 10px;
+    background: #F8DFE9;
+}
+
+#changelist .paginator {
+    background: #F8DFE9;
+    color: black;
+}
+
+#changelist-search .quiet {
+    width: 100%;
+    margin: 5px 0 0 25px;
+    color: #17202A;
+    
+}
+
+#changelist-filter {
+    font-weight: 400;
+    font-size: 14px;
+    padding: 0 0px;
+    margin-bottom: 10px;
+    background: #ffffff;
+    color: black;
+}
+
+#changelist-filter h2 {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 5px 15px;
+    margin-bottom: 12px;
+    border-bottom: none;
+    background: #116D72;
+    color: white;
+}
+
+#changelist-filter h3 {
+    font-weight: 400;
+    font-size: 14px;
+    padding: 0 15px;
+    margin-bottom: 10px;
+    background: #CFFBFD;
+    color: black;
+}
+
+.submit-row {
+    padding: 10px 10px 0;
+    margin: 0 0 15px;
+    display: flex;
+    flex-direction: column;
+    background-color:#F8DFE9;
+}
+
+.aligned .form-row, .aligned .form-row > div {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 100vw;
+    background: #F8DFE9;
+    color: black;
+}
+.aligned label {
+    width: 100%;
+    padding: 0 0 10px;
+    color: black;
+}
+
+.help, p.help, form p.help, div.help, form div.help, div.help li {
+    font-size: 11px;
+    color: black;
+}
+
+
+.admindatefilter .button, .admindatefilter input[type="reset"] {
+    background: #17202A;
+    padding: 4px 5px;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+}
+
+
+
+
+.btn-abrir-popup{
+    padding: 0 20px;
+	margin-bottom: 20px;
+	height: 40px;
+	line-height: 40px;
+	border: none;
+	color: white;
+	background: #116D72;
+	border-radius: 3px;
+	font-size: 16px;
+	cursor: pointer;
+	transition: .3s ease all;
+    cursor: pointer;
+    margin-left: 100 px;
+}
+
+/* POPUP */
+.overlay {
+	background: rgba(0,0,0,.3);
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+    right: 0;
+    align-items: center;
+	justify-content: center;
+    display: flex;
+    visibility: hidden;
+    z-index: 2;
+    
+}
+.overlay.active{
+    visibility: visible;
+}
+
+.popupadmin {
+	background: #F8DFE9;
+	box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.3);
+	border-radius: 3px;
+	padding: 20px;
+	text-align: center;
+    width: 600px;
+}
+
+.popupadmin .btn-cerrar-popup{
+    font-size: 16px;
+	line-height: 16px;
+	display: block;
+	text-align: right;
+	transition: .3s ease all;
+	color: #116D72;
+}
+
+.popupadmin .btn-cerrar-popup:hover {
+	color: #000;
+}
+
+.closePopUp {
+    float: right;
+}
+.popupadmin h4 {
+    color: #F8DFE9 !important;
+    font-family: serif !important;
+    font-size: 36px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+#footer {
+    display: block;
+    margin: auto;
+}
+
+#text-voice-assistants {
+    margin: 40px;
+}
+
+#signInDiv {
+    float:right;
+}
+
+#formSignUpDiv, #formModifyDiv {
+    align-content: center;
+    border-radius: 10px;
+    margin: 0 auto;
+}
+
+#textOnlyForVoiceAssistant {
+    position: absolute;
+    font-size: 0;
+}

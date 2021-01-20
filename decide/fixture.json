@@ -1,0 +1,246 @@
+[
+    {
+        "model": "authentication.userprofile",
+        "pk": 1,
+        "fields": {
+            "password": "pbkdf2_sha256$100000$qZNEDMojS5SB$APgSNa1RJsVGCbpJg9O2wAmM7qoWsUECPc9Drcfd70Y=",
+            "last_login": null,
+            "is_superuser": true,
+            "username": "admin",
+            "first_name": "",
+            "last_name": "",
+            "email": "admin@example.com",
+            "is_staff": true,
+            "is_active": true,
+            "date_joined": "2021-01-15T11:59:47.426Z",
+            "sex": "M",
+            "style": "N",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "base.key",
+        "pk": 4,
+        "fields": {
+            "p": 86396839190524599739258686907515882290976833432131360043944418805262895953247,
+            "g": 37978788742093080110734786725873951425119071564687193060864736737292639620122,
+            "y": 46271068869050244357271190568184799220199504848943973972428827830987884120997,
+            "x": 79096026129002612975416105045673237299249412678385427586784378921629291075133
+        }
+    },
+    {
+        "model": "base.key",
+        "pk": 5,
+        "fields": {
+            "p": 86396839190524599739258686907515882290976833432131360043944418805262895953247,
+            "g": 37978788742093080110734786725873951425119071564687193060864736737292639620122,
+            "y": 46271068869050244357271190568184799220199504848943973972428827830987884120997,
+            "x": 79096026129002612975416105045673237299249412678385427586784378921629291075133
+        }
+    },
+    {
+        "model": "base.auth",
+        "pk": 1,
+        "fields": {
+            "name": "localhost",
+            "url": "http://localhost:8000",
+            "me": false
+        }
+    },
+    {
+        "model": "voting.Question",
+        "pk": 1,
+        "fields": {
+            "desc": "Pregunta 1"
+        }
+    },
+    {
+        "model": "voting.QuestionOption",
+        "pk": 1,
+        "fields": {
+            "question": 1,
+            "number": 1,
+            "option": "Opción A"
+        }
+    },
+    {
+        "model": "voting.QuestionOption",
+        "pk": 2,
+        "fields": {
+            "question": 1,
+            "number": 2,
+            "option": "Opción B"
+        }
+    },
+    {
+        "model": "voting.QuestionOption",
+        "pk": 3,
+        "fields": {
+            "question": 1,
+            "number": 3,
+            "option": "Opción C"
+        }
+    },
+    {
+        "model": "voting.Voting",
+        "pk": 1,
+        "fields": {
+            "name": "Votación prueba 1",
+            "desc": "Desc prueba 1",
+            "question": [1],
+            "start_date": "2020-11-01T11:59:47.426Z"
+        }
+    },
+    {
+        "model": "census.Census",
+        "pk": 1,
+        "fields": {
+            "voting_id": 1,
+            "voter_id": 1
+        }
+    },
+    {
+        "model": "store.Vote",
+        "pk": 1,
+        "fields": {
+            "voting_id": 1,
+            "voter_id": 1,
+            "question_id": 1,
+            "sex": "M",
+            "voted": "2021-01-02T11:59:47.426Z"
+        }
+    },
+    {
+        "model": "voting.Voting",
+        "pk": 2,
+        "fields": {
+            "name": "Votación prueba 2",
+            "desc": "Desc prueba 2",
+            "question": [1],
+            "start_date": "2020-11-02T11:59:47.426Z"
+        }
+    },
+    {
+        "model": "census.Census",
+        "pk": 2,
+        "fields": {
+            "voting_id": 2,
+            "voter_id": 1
+        }
+    },
+    {
+        "model": "store.Vote",
+        "pk": 2,
+        "fields": {
+            "voting_id": 2,
+            "voter_id": 1,
+            "question_id": 1,
+            "sex": "M",
+            "voted": "2020-11-03T11:59:47.426Z"
+        }
+    },
+    {
+        "model": "voting.Voting",
+        "pk": 3,
+        "fields": {
+            "name": "Votación prueba 3",
+            "desc": "Desc prueba 3",
+            "question": [1],
+            "start_date": "2020-10-01T11:59:47.426Z"
+        }
+    },
+    {
+        "model": "census.Census",
+        "pk": 3,
+        "fields": {
+            "voting_id": 3,
+            "voter_id": 1
+        }
+    },
+    {
+        "model": "store.Vote",
+        "pk": 3,
+        "fields": {
+            "voting_id": 3,
+            "voter_id": 1,
+            "question_id": 1,
+            "sex": "M",
+            "voted": "2020-10-02T11:59:47.426Z"
+        }
+    },
+    {
+        "model": "voting.Voting",
+        "pk": 4,
+        "fields": {
+            "name": "Votación prueba 4",
+            "desc": "Desc prueba 4",
+            "question": [1],
+            "started_by": "admin",
+            "pub_key": 4,
+            "start_date": "2020-08-01T11:59:47.426Z",
+            "auths": [1]
+        }
+    },
+    {
+        "model": "census.Census",
+        "pk": 4,
+        "fields": {
+            "voting_id": 4,
+            "voter_id": 1
+        }
+    },
+    {
+        "model": "voting.Voting",
+        "pk": 5,
+        "fields": {
+            "name": "Votación prueba 5",
+            "desc": "Desc prueba 5",
+            "started_by": "admin",
+            "question": [1],
+            "start_date": "2020-11-01T11:59:47.426Z",
+            "end_date": "2020-11-10T11:59:47.426Z",
+            "auths": [1]
+        }
+    },
+    {
+        "model": "census.Census",
+        "pk": 5,
+        "fields": {
+            "voting_id": 5,
+            "voter_id": 1
+        }
+    },
+    {
+        "model": "voting.Voting",
+        "pk": 6,
+        "fields": {
+            "name": "Votación prueba 6",
+            "desc": "Desc prueba 6",
+            "started_by": "admin",
+            "question": [1],
+            "start_date": "2020-09-01T11:59:47.426Z",
+            "end_date": "2020-10-01T11:59:47.426Z",
+            "auths": [1]
+        }
+    },
+    {
+        "model": "census.Census",
+        "pk": 6,
+        "fields": {
+            "voting_id": 6,
+            "voter_id": 1
+        }
+    },
+    {
+        "model": "store.Vote",
+        "pk": 6,
+        "fields": {
+            "voting_id": 6,
+            "voter_id": 1,
+            "question_id": 1,
+            "sex": "M",
+            "voted": "2020-09-05T11:59:47.426Z"
+        }
+    }
+]

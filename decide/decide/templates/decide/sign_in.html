@@ -1,0 +1,112 @@
+{% extends "decide/base.html" %}
+{% load i18n static %}
+
+{% block content %}
+<b-row v-if="user != null">
+    <b-col>
+        You are already registered, click
+        <a href="/">here</a>
+        to return the home page.
+    </b-col>
+</b-row>
+
+<b-row v-if="user == null">
+    <b-col>
+        Welcome to Decide, i see that you want to be part of this community.
+        Don't be afraid and register to start voting. The outcome of the vote depends on each grain of sand.
+        Choose a username that represents you, your sex and your password.
+    </b-col>
+    <b-col style="float: right;">
+    <b-button id ="infoStylesButton" variant="info" onclick="mostrarInfo();">Show styles info</b-button>
+    <div id="infoStyles" class="infoStyles" style="display: none;"> 
+        You can also choose the colors of the page, the style. You can choose Normal or Night style, and if you have color blindness
+        you can choose Tritanopia or Color blind style. If you aren't sure which one to choose, don't worry, you can change the style
+        that you choose later.
+    </div>
+    <br>
+    <b-button id ="infoStylesButtonClose" variant="info" onclick="ocultarInfo();" style="display: none;">Close info</b-button>
+    </b-col>
+    <div id="textOnlyForVoiceAssistant">
+        Normal style and night: For people without any vision problem.
+        Tritanopia style: For people with a lack of sensitivity to blue.
+        Color blind: For people with a slight degree of difficulty discriminating shades of red and green.
+    </div>
+</b-row>
+<b-row v-if="user == null">
+    <div class="formSignUpDiv" id="formSignUpDiv"> 
+        <b-form @submit="onSubmitRegister" >
+            {% csrf_token %}
+            <b-form-group class="text-justify" label="{% trans " Username" %}" label-for="username">
+                <b-form-input id="username" type="text" v-model="formSignIn.username" autocomplete="username"
+                    required size="lg" style="width: 350px" />
+            </b-form-group>
+            <b-form-group class="text-justify" label="{% trans " Email" %}" label-for="email">
+                <b-form-input id="email" type="email" v-model="formSignIn.email" autocomplete="email"
+                placeholder="example@mail.com" style="width: 350px"/>
+            </b-form-group>
+            <b-form-group class="text-justify" label="{% trans " Sex" %}" label-for="sex">
+                {% for sex in user_sex %}
+                    <b-form-radio name="sex" v-model="formSignIn.sex" value="{% trans sex.0 %}" 
+                        required>{% trans sex.1 %}
+                    </b-form-radio>
+                {% endfor %}
+            </b-form-group>
+            <b-form-group class="text-justify" label="{% trans " Style" %}" label-for="style" >
+                {% for style in user_styles %}
+                    <b-form-radio name="style" v-model="formSignIn.style" value="{% trans style.0 %}" 
+                        required>{% trans style.1 %}
+                    </b-form-radio>
+                {% endfor %}
+            </b-form-group>   
+            <b-form-group class="text-justify" label="{% trans " Password" %}" label-for="password">
+                <b-form-input id="password" type="password" autocomplete="current-password"
+                    v-model="formSignIn.password" required style="width: 350px" pattern="^.{8,}$"
+                    title="Your password must contain at least 8 characters."/>
+            </b-form-group>
+            <b-button class="mt-3" type="submit" variant="primary" size="lg">
+                {% trans "Create account" %}</b-button>
+        </b-form>
+    </div>
+</b-row>
+{% endblock %}
+    
+{% block vue_data %}
+formSignIn: {
+    username: '',
+    password: '',
+    email: '',
+    sex: '',
+    style: ''
+}
+{% endblock %}
+
+{% block vue_methods %}
+onSubmitRegister(evt) {
+    evt.preventDefault();
+    this.postData("{% url 'gateway' 'authentication' '/register/' %}", this.formSignIn)
+        .then(data => {
+            this.showAlert("info", 'User successfully created');
+            alert ("User successfully created");
+            window.location.href='/';
+        })
+        .catch(error => {
+            this.showAlert("danger", 'Error: ' + error);
+        });
+},
+{% endblock %}
+
+{% block extrabody %}
+<script>
+    function mostrarInfo() {
+        document.getElementById('infoStyles').style.display = 'block';
+        document.getElementById('infoStylesButton').style.display = 'none';
+        document.getElementById('infoStylesButtonClose').style.display = 'block';
+        
+    }
+    function ocultarInfo() {
+        document.getElementById('infoStyles').style.display = 'none';
+        document.getElementById('infoStylesButton').style.display = 'block';
+        document.getElementById('infoStylesButtonClose').style.display = 'none';
+    }
+</script>
+{% endblock %}

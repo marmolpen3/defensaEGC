@@ -1,0 +1,30 @@
+
+{
+    "es":{
+      "prueba1":"Esto es una prueba",
+      "prueba2":"Este texto esta en español",
+      "welcome":"Bienvenido a Decide, una plataforma de votación online. Esta es la página principal. Aquí, puede iniciar sesión en su cuenta y presionar cabina para votar o presionar visualizador para ver los resultados.",
+      "questionHelp":"¿Necesitas ayuda sobre accesibilidad?",
+      "loginbuttom":"Iniciar sesión",
+      "user":"Usuario",
+      "pass": "Contraseña",
+      "pendingId":"Mis votaciones pendientes",
+      "resultsId": "Mis resultados de votaciones",
+      "welcomeID":"Bienvenido/a"
+
+
+    },
+    "en":{
+      "prueba1":"This is a test",
+      "prueba2":"This text is in english",
+      "welcome":"Welcome to Decide, an online voting platform. This is the main page. Here, you can login to your account and press booth to vote or press visualizer to see the results.",
+      "questionHelp":"You need some help on accesibility?",
+      "loginbuttom":"Login",
+      "user":"Username",
+      "pass":"Password",
+      "pendingId":"My pending votings",
+      "resultsId":"My votings results",
+      "welcomeID":"Welcome"
+
+    }
+  }

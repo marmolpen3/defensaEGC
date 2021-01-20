@@ -1,0 +1,144 @@
+{% extends "visualizer/visualizerBase.html" %}
+{% load i18n static %}
+
+{% block content %}
+    <div id="app-visualizer">
+        <!-- Navbar -->
+
+        <div class="voting container">
+
+            <div>
+                <p></p>
+                <h2 class="heading">Global Statistics:</h2>
+                <p>These statistics show the total data that we have registered on the platform, considering only the completed votings</p>
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Total number of votings</th>
+                            <th>Total votes</th>
+                            <th>Total number of people registered</th>
+                            <th>Average votes per voting</th>
+                            <th>Average census per voting</th>
+                            <th>Average percentage of total voting</th>
+                            <th>Average percentage of total abstention</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-if="nvoting">
+                            <td>[[nvoting]]</td>
+                            <td>[[votes]]</td>
+                            <td>[[census]]</td>
+                            <td>[[votes/nvoting]]</td>
+                            <td>[[census/nvoting]]</td>
+                            <td>[[porvot/nvoting]]%</td>
+                            <td>[[abst/nvoting]]%</td>                            
+                        </tr>
+                        <tr v-else>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0%</td>
+                            <td>0%</td>                            
+                        </tr>
+                    </tbody>
+
+                </table>
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Highest number of votes in a voting</th>
+                            <th>Lowest number of votes in a voting</th>
+                            <th>Highest number of census in a voting</th>
+                            <th>Lowest number of census in a voting</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-if="nvoting">
+                            <td>[[votesm]]</td>
+                            <td>[[votesr]]</td>
+                            <td>[[censusm]]</td>
+                            <td>[[censusr]]</td>
+                        </tr>
+                        <tr v-else>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Higher percentage of vote</th>
+                            <th>Lower percentage of vote</th>
+                            <th>Higher percentage of abstention</th>
+                            <th>Lower percentage of abstention</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-if="nvoting">
+                            <td>[[porvotm]]%</td>
+                            <td>[[porvotr]]%</td>
+                            <td>[[abstm]]%</td>
+                            <td>[[abstr]]%</td>
+                        </tr>
+                        <tr v-else>
+                            <td>0%</td>
+                            <td>0%</td>
+                            <td>0%</td>
+                            <td>0%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block extrabody %}
+    <!-- Vuejs -->
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://unpkg.com/babel-polyfill@latest/dist/polyfill.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.js"></script>
+
+    <script>
+        var votes = {{votes|safe}};
+        var votesm = {{votesm|safe}};
+        var votesr = {{votesr|safe}};
+        var census = {{census|safe}};
+        var censusm = {{censusm|safe}};
+        var censusr = {{censusr|safe}};
+        var nvoting = {{nvoting|safe}};
+        var abst = {{abst|safe}};
+        var abstm = {{abstm|safe}};
+        var abstr = {{abstr|safe}};
+        var porvot = {{porvot|safe}};
+        var porvotm = {{porvotm|safe}};
+        var porvotr = {{porvotr|safe}};
+        var app = new Vue({
+            delimiters: ['[[', ']]'],
+            el: '#app-visualizer',
+            data: {
+                votes: votes,
+                votesm: votesm,
+                votesr: votesr,
+                census: census,
+                censusm: censusm,
+                censusr: censusr,
+                nvoting: nvoting,
+                abst: abst,
+                abstm: abstm,
+                abstr: abstr,
+                porvot: porvot,
+                porvotm: porvotm,
+                porvotr: porvotr
+            }
+        })
+    </script>
+</body>
+{% endblock %}
