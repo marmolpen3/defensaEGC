@@ -178,12 +178,49 @@
         datasets: [{
           data:{{votaciones_por_meses}},
           backgroundColor: '#007bff',
-          label: 'Votaciones'
+          label: 'Votaciones',
+          yAxisID: 'axi-right',
+          order: 1
+        },
+        {
+          data: {{participation_by_month}},
+          label: 'Participaciones',
+          type: 'line',
+          fill: false,
+          order: 0,
+          borderColor: '#fd0000',
+          pointBackgroundColor: 'fd0000',
+          yAxisID: 'axi-left'
         }],
         labels: {{months|safe}}
       },
       options: {
-        responsive: true
+        responsive: true,
+        scales: {
+          yAxes: [{
+            type: 'linear',
+            display: true,
+            position: 'left',
+            id: 'axi-left',
+            ticks: {
+              min: 0,
+              suggestedMax: 100,
+              stepSize: 20
+            },
+            gridLines: {
+              display: false
+            }
+          },
+          {
+            type: 'linear',
+            display: true,
+            position: 'right',
+            id: 'axi-right',
+            ticks: {
+              stepSize: 1
+            }
+          }]
+        }
       }
     };
 
@@ -198,7 +235,14 @@
         labels: ['Única', 'Múltiple', 'Rango']
       },
       options: {
-        responsive: true
+        responsive: true,
+        scales: {
+          yAxes: [{
+            ticks: {
+              stepSize: 1
+            }
+          }]
+        }
       }
     };
 
